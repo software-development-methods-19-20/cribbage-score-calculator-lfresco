@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Runs {
-    public static int checkRuns(ArrayList<Integer> values) {
 
+    private static int findRuns(ArrayList<Integer> values){
         Collections.sort(values);
 
         int current_run = 1;
@@ -16,6 +16,10 @@ public class Runs {
                 current_run ++;
             }
         }
+        return current_run;
+    }
+
+    private static int parseResult(int current_run){
         if(current_run == 3) {
             return 3;
         } else if (current_run == 4){
@@ -23,6 +27,10 @@ public class Runs {
         } else if(current_run == 5){
             return 5;
         } else return 0;
+    }
+
+    public static int checkRuns(ArrayList<Integer> values) {
+        return parseResult(findRuns(values));
     }
 
 
